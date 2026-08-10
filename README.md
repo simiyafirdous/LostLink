@@ -1,6 +1,8 @@
 # LostFound+ (LostLink)
 
-LostFound+ is a web-based lost & found platform that uses visual AI matching to help reunite people with lost items. It supports reporting lost/found items, AI-assisted image matching, secure claims, and notifications. This repository contains a React frontend (`client/`) and an Express + Mongoose backend (`server/`).
+LostFound+ (LostLink) is a smart web-based platform that simplifies lost and found management. Users can report, search, and claim lost or found items through one centralized system. With secure authentication, organized search, claim tracking, and MongoDB storage, it helps communities recover belongings faster and more efficiently.
+
+This repository contains a React frontend (`client/`) and an Express + Mongoose backend (`server/`). The project integrates visual AI attribute extraction and a two-pass matching pipeline to surface plausible matches between lost and found reports.
 
 Key features
 - AI visual attribute extraction (Groq Vision)
@@ -66,3 +68,4 @@ Pushing to GitHub
 Where to next
 - Add your Atlas IP whitelist and I can restart the server and verify connectivity.
 - I can also help add CI, Dockerfiles, or deployment guides if you want.
+
