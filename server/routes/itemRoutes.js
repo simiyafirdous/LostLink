@@ -1,0 +1,14 @@
+const router = require("express").Router();
+const controller = require("../controllers/itemController");
+const { protect, authorize, optionalAuth } = require("../middleware/auth");
+const upload = require("../middleware/upload");
+router.get("/", controller.getItems);
+router.get("/mine", protect, controller.getMyItems);
+router.get("/review/pending", protect, authorize("moderator", "admin"), controller.getReviewQueue);
+router.get("/stats", protect, authorize("moderator", "admin"), controller.itemStats);
+router.post("/", optionalAuth, upload.single("image"), controller.createItem);
+router.get("/:id", controller.getItem);
+router.put("/:id", protect, upload.single("image"), controller.updateItem);
+router.delete("/:id", protect, controller.deleteItem);
+router.patch("/:id/review", protect, authorize("moderator", "admin"), controller.reviewItem);
+module.exports = router;

@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: lostlink
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    image: mongo-express:1.0.0
+    restart: unless-stopped
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_URL: "mongodb://mongo:27017/lostlink"
+      ME_CONFIG_OPTIONS_ALLOW_EXPLAIN: "true"
+    ports:
+      - "8081:8081"
+
+volumes:
+  mongo_data:
